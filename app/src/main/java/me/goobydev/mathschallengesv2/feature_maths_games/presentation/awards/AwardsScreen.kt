@@ -26,7 +26,7 @@ fun AwardsScreen(
     Scaffold(
         scaffoldState = scaffoldState,
         bottomBar = {
-            BottomNavBar(navController)
+            BottomNavBar(navController, selected = "Awards")
         }
     ) {
         Column(

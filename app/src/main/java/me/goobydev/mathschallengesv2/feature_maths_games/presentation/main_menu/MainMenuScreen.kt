@@ -26,7 +26,7 @@ fun MainMenuScreen(
     Scaffold(
         scaffoldState = scaffoldState,
         bottomBar = {
-            BottomNavBar(navController)
+            BottomNavBar(navController, selected = "Home")
         }
     ) {
         Column(

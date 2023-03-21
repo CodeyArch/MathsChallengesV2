@@ -26,7 +26,7 @@ fun SettingsScreen(
     Scaffold(
         scaffoldState = scaffoldState,
         bottomBar = {
-            BottomNavBar(navController)
+            BottomNavBar(navController, selected = "Settings")
         }
     ) {
         Column(
