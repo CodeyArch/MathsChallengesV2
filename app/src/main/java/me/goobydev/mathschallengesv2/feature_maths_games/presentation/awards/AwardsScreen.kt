@@ -1,4 +1,4 @@
-package me.goobydev.mathschallengesv2.feature_maths_games.presentation.main_menu
+package me.goobydev.mathschallengesv2.feature_maths_games.presentation.awards
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Arrangement
@@ -19,7 +19,7 @@ import me.goobydev.mathschallengesv2.feature_maths_games.presentation.components
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun MainMenuScreen(
+fun AwardsScreen(
     navController: NavController
 ) {
     val scaffoldState = rememberScaffoldState()
@@ -36,7 +36,7 @@ fun MainMenuScreen(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
-                text = "Maths Challenges!",
+                text = "Awards Here!",
                 style = MaterialTheme.typography.h5,
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier
@@ -44,6 +44,6 @@ fun MainMenuScreen(
                 textAlign = TextAlign.Start
             )
         }
-        
+
     }
 }
