@@ -5,6 +5,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
 
 private val DarkColorPalette = darkColors(
         primary = Purple200,
@@ -26,10 +27,21 @@ private val LightColorPalette = lightColors(
     onSurface = Color.Black,
     */
 )
+private val SpaceThemeLight = lightColors(
+    primary = DarkPurple400,
+    primaryVariant = DarkPurple700,
+    secondary = Blue500,
+    background = Color.White,
+    surface = DarkPurple50,
+    onPrimary = DarkPurple50,
+    onSecondary = Color.Black,
+    onBackground = Color.Black,
+    onSurface = Color.Black,
+)
 
 @Composable
 fun MathsChallengesV2Theme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable () -> Unit) {
-    val colors = LightColorPalette
+    val colors = SpaceThemeLight
 //    val colors = if (darkTheme) {
 //        DarkColorPalette
 //    } else {

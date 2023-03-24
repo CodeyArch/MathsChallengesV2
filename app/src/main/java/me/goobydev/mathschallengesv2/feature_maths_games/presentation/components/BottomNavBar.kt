@@ -1,10 +1,8 @@
 package me.goobydev.mathschallengesv2.feature_maths_games.presentation.components
 
+import android.content.res.Configuration
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.BottomAppBar
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Menu
@@ -13,7 +11,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.text.font.FontWeight
 import androidx.navigation.NavController
 import me.goobydev.mathschallengesv2.feature_maths_games.presentation.util.Screen
 
@@ -22,9 +22,16 @@ fun BottomNavBar(
     navController: NavController,
     selected: String = "Home"
 ) {
+    val configuration = LocalConfiguration.current
     BottomAppBar(
         modifier = Modifier
-            .fillMaxHeight(0.09f)
+            .fillMaxHeight(
+                if (configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
+                    0.08f
+                } else {
+                    0.16f
+                }
+                    )
     ) {
         IconButton(
             onClick = {
@@ -45,10 +52,14 @@ fun BottomNavBar(
                     tint = if (selected == "Home") {
                         Color.White
                     } else {
-                        Color.DarkGray
+                        Color.Black
                     }
                 )
-                Text(text = "Home")
+                Text(
+                    text = "Home",
+                    style = MaterialTheme.typography.body1,
+                    fontWeight = FontWeight.Bold,
+                )
             }
 
         }
@@ -71,10 +82,15 @@ fun BottomNavBar(
                     tint = if (selected == "Awards") {
                         Color.White
                     } else {
-                        Color.DarkGray
+                        Color.Black
                     }
                 )
-                Text(text = "Awards")
+                Text(
+                    text = "Awards",
+                    style = MaterialTheme.typography.body1,
+                    fontWeight = FontWeight.Bold,
+
+                )
             }
 
         }
@@ -97,10 +113,14 @@ fun BottomNavBar(
                     tint = if (selected == "Settings") {
                         Color.White
                     } else {
-                        Color.DarkGray
+                        Color.Black
                     }
                 )
-                Text(text = "Settings")
+                Text(
+                    text = "Settings",
+                    style = MaterialTheme.typography.body1,
+                    fontWeight = FontWeight.Bold,
+                )
             }
 
         }
