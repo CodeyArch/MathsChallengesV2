@@ -5,6 +5,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import me.goobydev.mathschallengesv2.feature_maths_games.presentation.awards.AwardsScreen
+import me.goobydev.mathschallengesv2.feature_maths_games.presentation.game_select.GameModeSelectScreen
 import me.goobydev.mathschallengesv2.feature_maths_games.presentation.main_menu.MainMenuScreen
 import me.goobydev.mathschallengesv2.feature_maths_games.presentation.settings.SettingsScreen
 import me.goobydev.mathschallengesv2.feature_maths_games.presentation.util.Screen
@@ -24,6 +25,9 @@ fun NavigationComponent() {
         }
         composable(route = Screen.SettingsScreen.route) {
             SettingsScreen(navController = navController)
+        }
+        composable(route = Screen.GameModeSelectScreen.route) {
+            GameModeSelectScreen(navController = navController)
         }
     }
 }
