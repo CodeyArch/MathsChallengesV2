@@ -16,7 +16,7 @@ fun GameModeItem(
     gameMode: MathsGameMode,
     modifier: Modifier = Modifier,
 ) {
-    Box(modifier = Modifier
+    Box(modifier = modifier
         .wrapContentHeight()
         .fillMaxWidth()
         .clip(RoundedCornerShape(4.dp))
