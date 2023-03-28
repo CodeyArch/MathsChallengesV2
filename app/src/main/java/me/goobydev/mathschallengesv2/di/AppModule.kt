@@ -9,10 +9,7 @@ import dagger.hilt.components.SingletonComponent
 import me.goobydev.mathschallengesv2.feature_maths_games.data.data_source.MathsGameModesDB
 import me.goobydev.mathschallengesv2.feature_maths_games.data.repository.MathsGameModesRepositoryImpl
 import me.goobydev.mathschallengesv2.feature_maths_games.domain.repository.MathsGameModesRepository
-import me.goobydev.mathschallengesv2.feature_maths_games.domain.use_cases.GameModesUseCases
-import me.goobydev.mathschallengesv2.feature_maths_games.domain.use_cases.GetGameMode
-import me.goobydev.mathschallengesv2.feature_maths_games.domain.use_cases.GetGameModes
-import me.goobydev.mathschallengesv2.feature_maths_games.domain.use_cases.UpdateGameMode
+import me.goobydev.mathschallengesv2.feature_maths_games.domain.use_cases.*
 import javax.inject.Singleton
 
 @Module
@@ -41,6 +38,11 @@ object AppModule {
     fun provideMathsGameModesUseCases(repository: MathsGameModesRepository): GameModesUseCases {
         return GameModesUseCases(
             getGameModes = GetGameModes(repository),
+            getOnlyAddition = GetOnlyAddition(repository),
+            getOnlySubtraction = GetOnlySubtraction(repository),
+            getOnlyMultiplication = GetOnlyMultiplication(repository),
+            getOnlyDivision = GetOnlyDivision(repository),
+            getOnlyMixed = GetOnlyMixed(repository),
             getGameMode = GetGameMode(repository),
             updateGameMode = UpdateGameMode(repository)
         )

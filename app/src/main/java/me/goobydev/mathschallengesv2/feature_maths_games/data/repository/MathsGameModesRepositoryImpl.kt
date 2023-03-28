@@ -8,15 +8,36 @@ import me.goobydev.mathschallengesv2.feature_maths_games.domain.repository.Maths
 class MathsGameModesRepositoryImpl(
     private val dao: GameModeDAO
 ) : MathsGameModesRepository {
-    override suspend fun updateGameMode(mathsGameMode: MathsGameMode) {
-        dao.updateGameMode(mathsGameMode)
-    }
 
     override fun getGameModes(): Flow<List<MathsGameMode>> {
         return dao.getGameModes()
     }
 
+    override fun getOnlyAddition(): Flow<List<MathsGameMode>> {
+        return dao.getOnlyAddition()
+    }
+
+    override fun getOnlySubtraction(): Flow<List<MathsGameMode>> {
+        return dao.getOnlySubtraction()
+    }
+
+    override fun getOnlyMultiplication(): Flow<List<MathsGameMode>> {
+        return dao.getOnlyMultiplication()
+    }
+
+    override fun getOnlyDivision(): Flow<List<MathsGameMode>> {
+        return dao.getOnlyDivision()
+    }
+
+    override fun getOnlyMixed(): Flow<List<MathsGameMode>> {
+        return dao.getOnlyMixed()
+    }
+
     override suspend fun getGameModeById(id: Int): MathsGameMode? {
         return dao.getGameModesById(id)
+    }
+
+    override suspend fun updateGameMode(mathsGameMode: MathsGameMode) {
+        dao.updateGameMode(mathsGameMode)
     }
 }
