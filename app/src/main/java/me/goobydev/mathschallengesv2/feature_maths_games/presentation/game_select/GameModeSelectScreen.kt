@@ -11,9 +11,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.squareup.moshi.Moshi
-import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
-import me.goobydev.mathschallengesv2.feature_maths_games.domain.model.MathsGameMode
 import me.goobydev.mathschallengesv2.feature_maths_games.presentation.game_select.components.GameModeItem
 import me.goobydev.mathschallengesv2.feature_maths_games.presentation.util.Screen
 
@@ -33,21 +30,17 @@ fun GameModeSelectScreen(
             modifier = Modifier.fillMaxSize()
         ) {
             items(state.gameModes) { gameMode ->
-                val moshi = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
-                val jsonAdapter = moshi.adapter(MathsGameMode::class.java).lenient()
-                val mathsGameModeJson = jsonAdapter.toJson(gameMode)
+
                 GameModeItem(
                     gameMode = gameMode,
                     modifier = Modifier
                         .fillMaxWidth()
                         .clickable {
                             navController.navigate(
-                                Screen.GamePlayScreen.route.replace("{gameMode}", mathsGameModeJson)
+                                Screen.GamePlayScreen.route.replace("{id}", gameMode.id.toString())
                             )
                         }
                 )
-                println("Received")
-
             }
         }
     }

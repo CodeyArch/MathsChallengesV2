@@ -12,17 +12,18 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import me.goobydev.mathschallengesv2.feature_maths_games.domain.model.MathsGameMode
 import me.goobydev.mathschallengesv2.ui.theme.orbitron
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun GamePlayScreen(
     navController: NavController,
-    gameMode: MathsGameMode
+    viewModel: GamePlayViewModel = hiltViewModel()
 ) {
     val scaffoldState = rememberScaffoldState()
+    val state = viewModel.state.value
     Scaffold(
         scaffoldState = scaffoldState,
         modifier = Modifier.fillMaxSize()
@@ -35,7 +36,7 @@ fun GamePlayScreen(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
-                text = gameMode.gameModeDifficulty,
+                text = state.gameMode.gameModeDifficulty,
                 style = MaterialTheme.typography.h3,
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier
@@ -44,7 +45,6 @@ fun GamePlayScreen(
                 fontFamily = orbitron,
                 fontSize = 36.sp
             )
-            println("Apples")
         }
     }
 }

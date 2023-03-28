@@ -12,7 +12,7 @@ import me.goobydev.mathschallengesv2.feature_maths_games.domain.use_cases.GameMo
 import javax.inject.Inject
 
 @HiltViewModel
-class GameModeSelectViewModel @Inject constructor(
+class GameModeSelectViewModel @Inject constructor (
     private val gameModesUseCases: GameModesUseCases
 ) : ViewModel() {
     private val _state = mutableStateOf(GameSelectState())
