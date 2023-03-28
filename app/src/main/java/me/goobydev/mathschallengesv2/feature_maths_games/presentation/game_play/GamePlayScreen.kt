@@ -9,7 +9,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.sp
+import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import kotlinx.coroutines.delay
@@ -56,37 +56,80 @@ fun GamePlayScreen(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
-                text = state.gameMode.gameModeDifficulty,
+                text = state.gameMode.time.toString(),
+                style = MaterialTheme.typography.body1,
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier
+                    .fillMaxWidth(),
+                textAlign = TextAlign.Left,
+            )
+            Text(
+                text = viewModel.question.value,
                 style = MaterialTheme.typography.h3,
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier
                     .fillMaxWidth(),
                 textAlign = TextAlign.Center,
                 fontFamily = orbitron,
-                fontSize = 36.sp
             )
-            Button(
-                onClick = { viewModel.onEvent(GamePlayEvent.QuestionAnswered(1)) }
-            ) {
-                Text(
-                    text = state.gameMode.score.toString(),
-                    style = MaterialTheme.typography.h3,
-                    fontWeight = FontWeight.Bold,
-                    modifier = Modifier
-                        .fillMaxWidth(),
-                    textAlign = TextAlign.Center,
-                    fontFamily = orbitron
-                )
+            Row(modifier = Modifier.fillMaxWidth()) {
+                Button(
+                    onClick = { viewModel.onEvent(GamePlayEvent.QuestionAnswered(1, viewModel.answersList.value[0])) }
+                ) {
+                    Text(
+                        text =  viewModel.answersList.value[0].toString(),
+                        style = MaterialTheme.typography.h3,
+                        fontWeight = FontWeight.Bold,
+                        modifier = Modifier
+                            .fillMaxWidth(0.5f)
+                            .padding(8.dp),
+                        textAlign = TextAlign.Center,
+                    )
+                }
+                Button(
+                    onClick = { viewModel.onEvent(GamePlayEvent.QuestionAnswered(1, viewModel.answersList.value[1])) }
+                ) {
+                    Text(
+                        text =  viewModel.answersList.value[1].toString(),
+                        style = MaterialTheme.typography.h3,
+                        fontWeight = FontWeight.Bold,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(8.dp),
+                        textAlign = TextAlign.Center,
+                    )
+                }
             }
-            Text(
-                text = state.gameMode.time.toString(),
-                style = MaterialTheme.typography.h3,
-                fontWeight = FontWeight.Bold,
-                modifier = Modifier
-                    .fillMaxWidth(),
-                textAlign = TextAlign.Center,
-                fontFamily = orbitron
-            )
+            Row(modifier = Modifier.fillMaxWidth()) {
+                Button(
+                    onClick = { viewModel.onEvent(GamePlayEvent.QuestionAnswered(1, viewModel.answersList.value[2])) }
+                ) {
+                    Text(
+                        text =  viewModel.answersList.value[2].toString(),
+                        style = MaterialTheme.typography.h3,
+                        fontWeight = FontWeight.Bold,
+                        modifier = Modifier
+                            .fillMaxWidth(0.5f)
+                            .padding(8.dp),
+                        textAlign = TextAlign.Center,
+                    )
+                }
+                Button(
+                    onClick = { viewModel.onEvent(GamePlayEvent.QuestionAnswered(1, viewModel.answersList.value[3])) }
+                ) {
+                    Text(
+                        text =  viewModel.answersList.value[3].toString(),
+                        style = MaterialTheme.typography.h3,
+                        fontWeight = FontWeight.Bold,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(8.dp),
+                        textAlign = TextAlign.Center,
+                    )
+                }
+            }
+
+
         }
     }
 }

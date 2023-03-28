@@ -12,5 +12,5 @@ data class MathsGameMode(
     val maximumScore: Int,
     val time: Int,
     val maximumTime: Int,
-    @PrimaryKey val id: Int? = null // Identity in database, used to access game modes
+    @PrimaryKey(autoGenerate = false) val id: Int? = null // Identity in database, used to access game modes
 )

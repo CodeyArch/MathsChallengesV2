@@ -8,6 +8,10 @@ import me.goobydev.mathschallengesv2.feature_maths_games.domain.repository.Maths
 class MathsGameModesRepositoryImpl(
     private val dao: GameModeDAO
 ) : MathsGameModesRepository {
+    override suspend fun updateGameMode(mathsGameMode: MathsGameMode) {
+        dao.updateGameMode(mathsGameMode)
+    }
+
     override fun getGameModes(): Flow<List<MathsGameMode>> {
         return dao.getGameModes()
     }

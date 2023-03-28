@@ -12,6 +12,7 @@ import me.goobydev.mathschallengesv2.feature_maths_games.domain.repository.Maths
 import me.goobydev.mathschallengesv2.feature_maths_games.domain.use_cases.GameModesUseCases
 import me.goobydev.mathschallengesv2.feature_maths_games.domain.use_cases.GetGameMode
 import me.goobydev.mathschallengesv2.feature_maths_games.domain.use_cases.GetGameModes
+import me.goobydev.mathschallengesv2.feature_maths_games.domain.use_cases.UpdateGameMode
 import javax.inject.Singleton
 
 @Module
@@ -40,7 +41,8 @@ object AppModule {
     fun provideMathsGameModesUseCases(repository: MathsGameModesRepository): GameModesUseCases {
         return GameModesUseCases(
             getGameModes = GetGameModes(repository),
-            getGameMode = GetGameMode(repository)
+            getGameMode = GetGameMode(repository),
+            updateGameMode = UpdateGameMode(repository)
         )
     }
 
