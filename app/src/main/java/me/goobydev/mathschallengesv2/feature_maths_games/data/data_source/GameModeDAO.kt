@@ -18,6 +18,20 @@ interface GameModeDAO {
             "    WHEN \"Score Rush\" THEN 5\n" +
             "    ELSE 6\n" +
             "END;")
+    fun getGameModesSortedByDifficulty(): Flow<List<MathsGameMode>>
+
+    @Query("SELECT * FROM mathsGameModes ORDER BY \n" +
+            "CASE gamemodesubtype\n" +
+            "    WHEN \"Addition\" THEN 1\n" +
+            "    WHEN \"Subtraction\" THEN 2\n" +
+            "    WHEN \"Multiplication\" THEN 3\n" +
+            "    WHEN \"Division\" THEN 4\n" +
+            "    WHEN \"Mixed\" THEN 5\n" +
+            "    ELSE 6\n" +
+            "END;")
+    fun getGameModesSortedBySubtype(): Flow<List<MathsGameMode>>
+
+    @Query("SELECT * FROM mathsGameModes")
     fun getGameModes(): Flow<List<MathsGameMode>>
 
     @Query("SELECT * FROM mathsGameModes WHERE gamemodesubtype=\"Addition\"")

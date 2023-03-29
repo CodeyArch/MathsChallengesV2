@@ -5,5 +5,6 @@ import me.goobydev.mathschallengesv2.feature_maths_games.domain.model.MathsGameM
 data class GameSelectState(
     val gameModes: List<MathsGameMode> = emptyList(),
     val gameModeFilter: String = "All",
+    val gameModeSort: String = "Difficulty",
     val isFilterSectionVisible: Boolean = false
 )

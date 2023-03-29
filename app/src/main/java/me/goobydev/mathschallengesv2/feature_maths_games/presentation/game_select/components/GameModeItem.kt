@@ -39,11 +39,11 @@ fun GameModeItem(
         .border(2.dp, Color.Black, RoundedCornerShape(8.dp))
         .background(
             when (gameMode.gameModeDifficulty) {
-                "Easy" -> Green500
-                "Medium" -> Yellow500
-                "Hard" -> Red500
-                "Impossible" -> Purple500
-                "Score Rush" -> Orange500
+                "Easy" -> Green400
+                "Medium" -> Yellow400
+                "Hard" -> Red400
+                "Impossible" -> Purple400
+                "Score Rush" -> Orange400
                 else -> Blue500
             }
         )

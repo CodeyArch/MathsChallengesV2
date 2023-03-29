@@ -19,6 +19,7 @@ import androidx.navigation.NavController
 import me.goobydev.mathschallengesv2.core.presentation.components.BackTopAppBar
 import me.goobydev.mathschallengesv2.feature_maths_games.presentation.game_select.components.FilterSection
 import me.goobydev.mathschallengesv2.feature_maths_games.presentation.game_select.components.GameModeItem
+import me.goobydev.mathschallengesv2.feature_maths_games.presentation.game_select.components.SortSection
 import me.goobydev.mathschallengesv2.feature_maths_games.presentation.util.Screen
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
@@ -69,7 +70,14 @@ fun GameModeSelectScreen(
                         modifier = Modifier.testTag("FILTER_SECTION"),
                         filter = state.gameModeFilter,
                         onFilterChange = {
-                            viewModel.onEvent(GameModeSelectEvent.Order(it))
+                            viewModel.onEvent(GameModeSelectEvent.Filter(it))
+                        }
+                    )
+                    SortSection(
+                        modifier = Modifier.testTag("FILTER_SECTION"),
+                        sort = state.gameModeSort,
+                        onSortChange = {
+                            viewModel.onEvent(GameModeSelectEvent.Sort(it))
                         }
                     )
                 }

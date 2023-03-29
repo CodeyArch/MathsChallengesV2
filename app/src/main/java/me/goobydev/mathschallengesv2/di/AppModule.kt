@@ -38,6 +38,8 @@ object AppModule {
     fun provideMathsGameModesUseCases(repository: MathsGameModesRepository): GameModesUseCases {
         return GameModesUseCases(
             getGameModes = GetGameModes(repository),
+            getGameModesSortedByDifficulty = GetGameModesSortedByDifficulty(repository),
+            getGameModesSortedBySubtype = GetGameModesSortedBySubtype(repository),
             getOnlyAddition = GetOnlyAddition(repository),
             getOnlySubtraction = GetOnlySubtraction(repository),
             getOnlyMultiplication = GetOnlyMultiplication(repository),

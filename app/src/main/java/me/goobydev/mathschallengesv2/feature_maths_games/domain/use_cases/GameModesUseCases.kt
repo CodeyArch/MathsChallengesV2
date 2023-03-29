@@ -2,6 +2,8 @@ package me.goobydev.mathschallengesv2.feature_maths_games.domain.use_cases
 
 data class GameModesUseCases(
     val getGameModes: GetGameModes,
+    val getGameModesSortedByDifficulty: GetGameModesSortedByDifficulty,
+    val getGameModesSortedBySubtype: GetGameModesSortedBySubtype,
     val getOnlyAddition: GetOnlyAddition,
     val getOnlySubtraction: GetOnlySubtraction,
     val getOnlyMultiplication: GetOnlyMultiplication,

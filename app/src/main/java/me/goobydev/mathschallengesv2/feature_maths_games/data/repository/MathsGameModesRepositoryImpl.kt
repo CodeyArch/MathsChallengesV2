@@ -13,6 +13,14 @@ class MathsGameModesRepositoryImpl(
         return dao.getGameModes()
     }
 
+    override fun getGameModesSortedByDifficulty(): Flow<List<MathsGameMode>> {
+        return dao.getGameModesSortedByDifficulty()
+    }
+
+    override fun getGameModesSortedBySubtype(): Flow<List<MathsGameMode>> {
+        return dao.getGameModesSortedBySubtype()
+    }
+
     override fun getOnlyAddition(): Flow<List<MathsGameMode>> {
         return dao.getOnlyAddition()
     }

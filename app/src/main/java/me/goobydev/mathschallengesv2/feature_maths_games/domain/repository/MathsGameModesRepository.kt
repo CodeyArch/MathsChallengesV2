@@ -6,6 +6,8 @@ import me.goobydev.mathschallengesv2.feature_maths_games.domain.model.MathsGameM
 interface MathsGameModesRepository {
 
     fun getGameModes(): Flow<List<MathsGameMode>>
+    fun getGameModesSortedByDifficulty(): Flow<List<MathsGameMode>>
+    fun getGameModesSortedBySubtype(): Flow<List<MathsGameMode>>
     fun getOnlyAddition(): Flow<List<MathsGameMode>>
     fun getOnlySubtraction(): Flow<List<MathsGameMode>>
     fun getOnlyMultiplication(): Flow<List<MathsGameMode>>

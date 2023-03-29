@@ -1,6 +1,8 @@
 package me.goobydev.mathschallengesv2.feature_maths_games.presentation.game_select.components
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -16,6 +18,11 @@ fun FilterSection(
     Column(
         modifier = modifier
     ) {
+        Text(
+            text = "Filters",
+            style = MaterialTheme.typography.h6,
+            modifier = Modifier.padding(horizontal = 14.dp)
+        )
         Row(
             modifier = Modifier.fillMaxWidth()
         ) {
@@ -59,6 +66,7 @@ fun FilterSection(
                 onSelect = { onFilterChange("Mixed") }
             )
         }
+        Spacer(modifier = Modifier.height(4.dp))
 
     }
 }

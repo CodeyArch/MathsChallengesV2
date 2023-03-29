@@ -72,13 +72,36 @@ class GameModeSelectViewModel @Inject constructor (
                     .launchIn(viewModelScope)
             }
             "All" -> {
-                gameModesUseCases.getGameModes()
-                    .onEach { gameModes ->
-                        _state.value = state.value.copy(
-                            gameModes = gameModes
-                        )
+                when(state.value.gameModeSort) {
+                    "Difficulty" -> {
+                        gameModesUseCases.getGameModesSortedByDifficulty()
+                            .onEach { gameModes ->
+                                _state.value = state.value.copy(
+                                    gameModes = gameModes
+                                )
+                            }
+                            .launchIn(viewModelScope)
                     }
-                    .launchIn(viewModelScope)
+                    "Subtype" -> {
+                        gameModesUseCases.getGameModesSortedBySubtype()
+                            .onEach { gameModes ->
+                                _state.value = state.value.copy(
+                                    gameModes = gameModes
+                                )
+                            }
+                            .launchIn(viewModelScope)
+                    }
+                    else -> {
+                        gameModesUseCases.getGameModes()
+                            .onEach { gameModes ->
+                                _state.value = state.value.copy(
+                                    gameModes = gameModes
+                                )
+                            }
+                            .launchIn(viewModelScope)
+                    }
+                }
+
             }
             else -> {
                 gameModesUseCases.getGameModes()
@@ -99,9 +122,15 @@ class GameModeSelectViewModel @Inject constructor (
                     isFilterSectionVisible = !state.value.isFilterSectionVisible
                 )
             }
-            is GameModeSelectEvent.Order -> {
+            is GameModeSelectEvent.Filter -> {
                 _state.value = state.value.copy(
                     gameModeFilter = event.value
+                )
+                getGameModes(state.value.gameModeFilter)
+            }
+            is GameModeSelectEvent.Sort -> {
+                _state.value = state.value.copy(
+                    gameModeSort = event.value
                 )
                 getGameModes(state.value.gameModeFilter)
             }
