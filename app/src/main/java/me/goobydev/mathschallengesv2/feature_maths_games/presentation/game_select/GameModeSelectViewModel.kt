@@ -21,16 +21,90 @@ class GameModeSelectViewModel @Inject constructor (
     private var getGameModesJob: Job? = null
 
     init {
-        getGameModes()
+        getGameModes(state.value.gameModeFilter)
     }
-    private fun getGameModes() {
+    private fun getGameModes(filter: String) {
         getGameModesJob?.cancel()
-        getGameModesJob = gameModesUseCases.getGameModes()
-            .onEach { gameModes ->
+        getGameModesJob = when(filter) {
+            "Addition" -> {
+                gameModesUseCases.getOnlyAddition()
+                    .onEach { gameModes ->
+                        _state.value = state.value.copy(
+                            gameModes = gameModes
+                        )
+                    }
+                    .launchIn(viewModelScope)
+            }
+            "Subtraction" -> {
+                gameModesUseCases.getOnlySubtraction()
+                    .onEach { gameModes ->
+                        _state.value = state.value.copy(
+                            gameModes = gameModes
+                        )
+                    }
+                    .launchIn(viewModelScope)
+            }
+            "Multiplication" -> {
+                gameModesUseCases.getOnlyMultiplication()
+                    .onEach { gameModes ->
+                        _state.value = state.value.copy(
+                            gameModes = gameModes
+                        )
+                    }
+                    .launchIn(viewModelScope)
+            }
+            "Division" -> {
+                gameModesUseCases.getOnlyDivision()
+                    .onEach { gameModes ->
+                        _state.value = state.value.copy(
+                            gameModes = gameModes
+                        )
+                    }
+                    .launchIn(viewModelScope)
+            }
+            "Mixed" -> {
+                gameModesUseCases.getOnlyMixed()
+                    .onEach { gameModes ->
+                        _state.value = state.value.copy(
+                            gameModes = gameModes
+                        )
+                    }
+                    .launchIn(viewModelScope)
+            }
+            "All" -> {
+                gameModesUseCases.getGameModes()
+                    .onEach { gameModes ->
+                        _state.value = state.value.copy(
+                            gameModes = gameModes
+                        )
+                    }
+                    .launchIn(viewModelScope)
+            }
+            else -> {
+                gameModesUseCases.getGameModes()
+                    .onEach { gameModes ->
+                        _state.value = state.value.copy(
+                            gameModes = gameModes
+                        )
+                    }
+                    .launchIn(viewModelScope)
+            }
+        }
+
+    }
+    fun onEvent(event: GameModeSelectEvent) {
+        when(event) {
+            GameModeSelectEvent.ToggleFilterSection -> {
                 _state.value = state.value.copy(
-                    gameModes = gameModes
+                    isFilterSectionVisible = !state.value.isFilterSectionVisible
                 )
             }
-            .launchIn(viewModelScope)
+            is GameModeSelectEvent.Order -> {
+                _state.value = state.value.copy(
+                    gameModeFilter = event.value
+                )
+                getGameModes(state.value.gameModeFilter)
+            }
+        }
     }
 }

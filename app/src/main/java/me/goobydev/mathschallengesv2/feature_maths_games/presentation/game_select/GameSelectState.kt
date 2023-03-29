@@ -3,5 +3,7 @@ package me.goobydev.mathschallengesv2.feature_maths_games.presentation.game_sele
 import me.goobydev.mathschallengesv2.feature_maths_games.domain.model.MathsGameMode
 
 data class GameSelectState(
-    val gameModes: List<MathsGameMode> = emptyList()
+    val gameModes: List<MathsGameMode> = emptyList(),
+    val gameModeFilter: String = "All",
+    val isFilterSectionVisible: Boolean = false
 )
