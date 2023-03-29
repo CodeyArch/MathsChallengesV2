@@ -77,6 +77,9 @@ fun GameModeSelectScreen(
             LazyColumn(
                 modifier = Modifier.fillMaxSize()
             ) {
+                item {
+                    Spacer(modifier = Modifier.height(12.dp))
+                }
                 items(state.gameModes) { gameMode ->
 
                     GameModeItem(
@@ -92,6 +95,7 @@ fun GameModeSelectScreen(
                                 )
                             }
                     )
+                    Spacer(modifier = Modifier.height(12.dp))
                 }
             }
         }

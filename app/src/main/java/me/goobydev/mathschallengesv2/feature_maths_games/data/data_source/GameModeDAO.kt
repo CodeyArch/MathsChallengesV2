@@ -9,7 +9,15 @@ import me.goobydev.mathschallengesv2.feature_maths_games.domain.model.MathsGameM
 @Dao
 interface GameModeDAO {
 
-    @Query("SELECT * FROM mathsGameModes ")
+    @Query("SELECT * FROM mathsGameModes ORDER BY \n" +
+            "CASE gamemodedifficulty\n" +
+            "    WHEN \"Easy\" THEN 1\n" +
+            "    WHEN \"Medium\" THEN 2\n" +
+            "    WHEN \"Hard\" THEN 3\n" +
+            "    WHEN \"Impossible\" THEN 4\n" +
+            "    WHEN \"Score Rush\" THEN 5\n" +
+            "    ELSE 6\n" +
+            "END;")
     fun getGameModes(): Flow<List<MathsGameMode>>
 
     @Query("SELECT * FROM mathsGameModes WHERE gamemodesubtype=\"Addition\"")

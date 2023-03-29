@@ -2,6 +2,17 @@ package me.goobydev.mathschallengesv2.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
+val Red500 = Color(0xFFF44336)
+
+val Orange500 = Color(0xFFFF5722)
+
+val Yellow500 = Color(0xFFFFEB3B)
+
+val Green500 = Color(0xFF4CAF50)
+
+val Blue200 = Color(0xFF90CAF9)
+val Blue500 = Color(0xFF03A9F4)
+
 val Purple200 = Color(0xFFBB86FC)
 val Purple500 = Color(0xFF6200EE)
 val Purple700 = Color(0xFF3700B3)
@@ -18,5 +29,7 @@ val DarkPurple700 = Color(0xFF402297)
 val DarkPurple800 = Color(0xFF371C8D)
 val DarkPurple900 = Color(0xFF27117D)
 
-val Blue200 = Color(0xFF90CAF9)
-val Blue500 = Color(0xFF03A9F4)
+
+
+
+
