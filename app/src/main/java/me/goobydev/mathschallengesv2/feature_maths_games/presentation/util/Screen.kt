@@ -7,5 +7,6 @@ sealed class Screen(val route: String) {
     object SettingsScreen: Screen("settings_screen")
     object AboutScreen: Screen("about_screen")
     object GameModeSelectScreen: Screen("game_mode_select_screen")
+    object GameOverScreen: Screen("game_over_screen?id={id}&lastScore={lastScore}&lastTime={lastTime}&highScore={highScore}")
 
 }

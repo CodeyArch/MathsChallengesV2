@@ -39,6 +39,9 @@ class GamePlayViewModel @Inject constructor (
 
     private val _answersList = mutableStateOf(listOf(4,4,4,4))
     val answersList: MutableState<List<Int>> = _answersList
+
+    private val _highScore = mutableStateOf(false)
+    val highScore: MutableState<Boolean> = _highScore
     // Shuffle the list to put the answers in random indexes
 
     private val maxNums = 12 // later change this to use a set number
@@ -167,6 +170,7 @@ class GamePlayViewModel @Inject constructor (
                     )
                     _state.value = state.value.copy(gameMode = gameMode)
                     if (_time.value == state.value.gameMode.maximumTime) {
+                        onEvent(GamePlayEvent.UpdateGameMode)
                         _eventFlow.emit(UiEvent.TimerEnd)
                     }
                     println("Total time: ${_time.value}")
@@ -223,7 +227,7 @@ class GamePlayViewModel @Inject constructor (
                                 state.value.gameMode.id
                             )
                         )
-                        println("Hello")
+                        highScore.value = true
                     }
                 }
             }

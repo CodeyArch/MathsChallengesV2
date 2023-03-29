@@ -7,6 +7,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import me.goobydev.mathschallengesv2.feature_maths_games.presentation.awards.AwardsScreen
+import me.goobydev.mathschallengesv2.feature_maths_games.presentation.game_over.GameOverScreen
 import me.goobydev.mathschallengesv2.feature_maths_games.presentation.game_play.GamePlayScreen
 import me.goobydev.mathschallengesv2.feature_maths_games.presentation.game_select.GameModeSelectScreen
 import me.goobydev.mathschallengesv2.feature_maths_games.presentation.main_menu.MainMenuScreen
@@ -43,6 +44,33 @@ fun NavigationComponent() {
             )
         ) {
             GamePlayScreen(navController = navController)
+        }
+        composable(
+            route = Screen.GameOverScreen.route,
+            arguments = listOf(
+                navArgument(
+                    name = "id"
+                ) {
+                    type = NavType.IntType
+                    defaultValue = 1
+                },
+                navArgument(
+                    name = "lastScore"
+                ) {
+                    type = NavType.IntType
+                    defaultValue = 1
+                },
+                navArgument(
+                    name = "lastTime"
+                ) {
+                    type = NavType.IntType
+                    defaultValue = 1
+                },
+            )
+        ) {
+            GameOverScreen(
+                navController = navController,
+            )
         }
     }
 }

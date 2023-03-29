@@ -44,7 +44,7 @@ fun GameModeItem(
                 "Hard" -> Red400
                 "Impossible" -> Purple400
                 "Score Rush" -> Orange400
-                else -> Blue500
+                else -> Blue400
             }
         )
         .clip(RoundedCornerShape(8.dp))
@@ -73,11 +73,11 @@ fun GameModeItem(
                         style = MaterialTheme.typography.body1
                     )
                     Text(
-                        text = gameMode.gameModeDifficulty,
+                        text = "Best Score: ${gameMode.score}",
                         style = MaterialTheme.typography.body1
                     )
                     Text(
-                        text = gameMode.gameModeDifficulty,
+                        text = "Best Time: ${gameMode.time}",
                         style = MaterialTheme.typography.body1
                     )
                 }
